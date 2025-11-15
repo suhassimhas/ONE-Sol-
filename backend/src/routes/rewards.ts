@@ -12,7 +12,7 @@ const router = Router();
 router.get(
   '/list',
   optionalAuth,
-  asyncHandler(async (req: Request, res: Response) => {
+  asyncHandler(async (_req: Request, res: Response) => {
     const rewards = await redemptionService.listAvailableRewards();
 
     res.status(200).json({

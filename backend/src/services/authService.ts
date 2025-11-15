@@ -5,7 +5,7 @@ import { User, JwtPayload } from '../types/user';
 import { UnauthorizedError } from '../utils/errors';
 import { logger } from '../utils/logger';
 import { userService } from './userService';
-import { sanitizeEmail, isValidEmail } from '../utils/helpers';
+import { sanitizeEmail } from '../utils/helpers';
 import { validateEmail, validatePassword } from '../utils/validators';
 
 export class AuthService {
@@ -52,7 +52,7 @@ export class AuthService {
 
   async login(
     email: string,
-    password: string
+    _password: string
   ): Promise<{
     user: User;
     token: string;

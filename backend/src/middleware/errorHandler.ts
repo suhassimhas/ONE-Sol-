@@ -4,9 +4,9 @@ import { AppError } from '../utils/errors';
 
 export const errorHandler = (
   err: any,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   logger.error('Error:', err);
 
@@ -18,7 +18,7 @@ export const errorHandler = (
     });
   }
 
-  res.status(500).json({
+  return res.status(500).json({
     success: false,
     error: 'Internal Server Error',
   });

@@ -18,7 +18,7 @@ router.use('/rewards', rewardRoutes);
 router.use('/admin/n8n', adminN8nRoutes);
 
 // Health check endpoint
-router.get('/health', (req, res) => {
+router.get('/health', (_req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 

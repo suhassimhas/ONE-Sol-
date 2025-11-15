@@ -17,10 +17,8 @@ interface N8nConfig {
 
 export class N8nClient {
   private client: AxiosInstance;
-  private baseUrl: string;
 
   constructor(config: N8nConfig) {
-    this.baseUrl = config.baseUrl;
     this.client = axios.create({
       baseURL: config.baseUrl,
       timeout: config.timeout || 30000,

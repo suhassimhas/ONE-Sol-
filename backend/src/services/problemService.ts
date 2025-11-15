@@ -2,7 +2,6 @@ import { db } from '../config/firebase';
 import { Problem, CreateProblemRequest } from '../types/problem';
 import { COLLECTIONS, PROBLEM_STATUS } from '../config/constants';
 import { generateId } from '../utils/helpers';
-import { NotFoundError } from '../utils/errors';
 import { logger } from '../utils/logger';
 import { n8nClient } from '../integrations/n8n';
 import { userService } from './userService';
@@ -145,7 +144,7 @@ export class ProblemService {
 
       // If domain specified, filter by category/type
       if (domain) {
-        problems = problems.filter((p) => {
+        problems = problems.filter((_p) => {
           // You could map domain to category or filter by metadata
           return true; // Placeholder
         });

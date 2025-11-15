@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { ForbiddenError } from '../utils/errors';
 
 export const requireRole = (...allowedRoles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -14,7 +13,7 @@ export const requireRole = (...allowedRoles: string[]) => {
       });
     }
 
-    next();
+    return next();
   };
 };
 

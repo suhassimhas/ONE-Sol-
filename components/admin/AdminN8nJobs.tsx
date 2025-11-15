@@ -11,7 +11,7 @@ type N8nJob = {
   updatedAt?: string;
 };
 
-const API_BASE = (import.meta.env && (import.meta.env.VITE_API_BASE || import.meta.env.REACT_APP_API_BASE)) || 'http://localhost:3001';
+const API_BASE = 'http://localhost:3001';
 
 const AdminN8nJobs: React.FC = () => {
   const [jobs, setJobs] = useState<N8nJob[]>([]);

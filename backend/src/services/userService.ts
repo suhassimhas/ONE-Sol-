@@ -1,8 +1,7 @@
 import { db, auth } from '../config/firebase';
 import { User, CompanyProfile, ContractorProfile } from '../types/user';
 import { COLLECTIONS, ROLES } from '../config/constants';
-import { generateId } from '../utils/helpers';
-import { NotFoundError, ConflictError } from '../utils/errors';
+import { NotFoundError } from '../utils/errors';
 import { logger } from '../utils/logger';
 
 export class UserService {
@@ -90,7 +89,6 @@ export class UserService {
       const oneCreditsRef = db.collection(COLLECTIONS.ONE_CREDITS).doc(userId);
       const oneCreditsDoc = await oneCreditsRef.get();
       if (oneCreditsDoc.exists) {
-        const current = oneCreditsDoc.data() || {};
         await oneCreditsRef.update({
           balance: amount,
           updatedAt: new Date(),

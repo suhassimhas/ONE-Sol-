@@ -1,5 +1,5 @@
 import { db } from '../config/firebase';
-import { RewardRedemption, Reward, RedeemRewardRequest } from '../types/redemption';
+import { RewardRedemption, Reward } from '../types/redemption';
 import { COLLECTIONS, REDEMPTION_STATUS } from '../config/constants';
 import { generateId } from '../utils/helpers';
 import { NotFoundError } from '../utils/errors';

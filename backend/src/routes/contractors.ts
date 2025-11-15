@@ -45,7 +45,7 @@ router.get(
       });
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Contractor retrieved',
       data: { contractor },

@@ -1,6 +1,6 @@
 import { db } from '../config/firebase';
 import { Bid, BiddingSession, CreateBidRequest } from '../types/bidding';
-import { COLLECTIONS, BIDDING_STATUS, PROBLEM_STATUS } from '../config/constants';
+import { COLLECTIONS, BIDDING_STATUS } from '../config/constants';
 import { generateId } from '../utils/helpers';
 import { NotFoundError } from '../utils/errors';
 import { logger } from '../utils/logger';
