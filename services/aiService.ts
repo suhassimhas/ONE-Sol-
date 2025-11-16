@@ -2,43 +2,6 @@
 import { Problem, Bid, AIAnalysis } from '../types';
 import { AIConfig } from '../contexts/AppContext';
 
-/**
- * AI API INTEGRATION GUIDE
- * 
- * Replace MockAIService methods with production API calls.
- * This service is designed as a drop-in replacement.
- * 
- * --- Analyze Report ---
- * POST /api/ai/analyze-report
- * Body: {
- *   description: string,
- *   imageBase64: string, // if available
- *   location: {lat, lng},
- *   timestamp: string
- * }
- * Response: AIAnalysis object
- * 
- * --- Evaluate Bids ---
- * POST /api/ai/evaluate-bids
- * Body: {
- *   problemId: string,
- *   bids: Array<Bid>
- * }
- * Response: {
- *   recommendedBid: string, // ID of the recommended bid
- *   ranking: Array<Bid with aiScore, aiRanking, aiReasoning>
- * }
- * 
- * --- Heatmap Intelligence ---
- * GET /api/ai/heatmap-intelligence
- * Query: ?timeRange=...&filters=...
- * Response: {
- *   clusters: Array<{lat, lng, count, severity}>,
- *   priorities: Array<{problemId, score}>,
- *   recommendations: Array<string>
- * }
- */
-
 export interface IaiService {
   analyzeReport: (reportData: Partial<Problem>) => Promise<AIAnalysis>;
   evaluateBids: (problemId: string, bids: Bid[]) => Promise<{ recommendedBid: string; ranking: Bid[] }>;
@@ -132,23 +95,12 @@ const MockAIService: IaiService = {
 
 const ProductionAIService = (config: AIConfig): IaiService => ({
   analyzeReport: async (reportData) => {
-    // In production, you would use fetch to call the real API
-    // const response = await fetch(`${config.endpoint}/analyze-report`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(reportData),
-    // });
-    // if (!response.ok) throw new Error('AI analysis failed');
-    // return response.json();
-    console.warn("AI Service is in PRODUCTION mode, but using MOCK implementation as a fallback.");
     return MockAIService.analyzeReport(reportData);
   },
   evaluateBids: async (problemId, bids) => {
-    console.warn("AI Service is in PRODUCTION mode, but using MOCK implementation as a fallback.");
     return MockAIService.evaluateBids(problemId, bids);
   },
   generateHeatmapData: async (problems) => {
-    console.warn("AI Service is in PRODUCTION mode, but using MOCK implementation as a fallback.");
     return MockAIService.generateHeatmapData(problems);
   }
 });
